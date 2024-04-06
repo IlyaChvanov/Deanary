@@ -20,7 +20,7 @@ void Group::chooseHead(const Student *newHead) {
 int Group::getAverageMark() const {
     double marksSum = 0.0;
     size_t numOfStudents = students.size();
-    for (const auto &st: students) {
+    for (const auto &st : students) {
         marksSum += st.getAverageMark();
     }
 
@@ -28,7 +28,7 @@ int Group::getAverageMark() const {
 }
 
 const Student &Group::getStudent(const std::string &fio) const {
-    for (auto st: students) {
+    for (auto st : students) {
         if (st.getFio() == fio)
             return st;
     }
@@ -36,11 +36,11 @@ const Student &Group::getStudent(const std::string &fio) const {
 }
 
 const Student &Group::getStudent(size_t id) const {
-    for (const auto &st: students) {
+    for (const auto &st : students) {
         if (st.getId() == id)
             return st;
     }
-    //throw "Student not found";
+    throw "Student not found";
 }
 
 void Group::removeStudent(Student &st) {
@@ -69,13 +69,13 @@ const string &Group::getTitle() const {
 }
 
 void Group::printIdOfStudents() const {
-    for (const auto& student: students)
+    for (const auto& student : students)
         std::cout << student.getId() << std::endl;
 }
 
 vector<Student *> Group::getAllStudents() {
     vector<Student *> toReturn;
-    for (auto &st: students)
+    for (auto &st : students)
         toReturn.push_back(&st);
     return toReturn;
 }

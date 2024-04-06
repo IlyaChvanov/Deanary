@@ -5,10 +5,10 @@
 #ifndef DEANERY_GROUP_H
 #define DEANERY_GROUP_H
 
-#include "..//include/Student.h"
-#include "Student.h"
 #include <vector>
 #include <string>
+#include "..//include/Student.h"
+#include "Student.h"
 
 using std::vector, std::string;
 
@@ -17,8 +17,8 @@ class Student;
 class Deanary;
 
 class Group {
-public:
-    Group(const string &title) : title(title) {};
+ public:
+    explicit Group(const string &title) : title(title) {}
 
     int getAverageMark() const;
 
@@ -42,12 +42,11 @@ public:
 
     const Student &getHead() const;
 
-private:
+ private:
     string title;
     string spec;
     vector<Student> students;
     const Student *head = nullptr;
-
 };
 
-#endif //DEANERY_GROUP_H
+#endif  // DEANERY_GROUP_H

@@ -8,11 +8,10 @@
 using std::vector, std::string, std::endl, std::cout;
 
 int main() {
-
     Deanary HSE;
     HSE.createGroups("..//bd/groups.txt");
 
-    for (const auto &x: HSE.getGroups()) {
+    for (const auto &x : HSE.getGroups()) {
         cout << "Avarage mark in group " << x->getTitle() << " is " << x->getAverageMark() << endl;
     }
     HSE.addMarksToAll();

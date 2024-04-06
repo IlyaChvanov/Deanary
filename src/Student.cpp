@@ -25,7 +25,7 @@ void Student::addMark(int mark) {
 double Student::getAverageMark() const {
     size_t numOfMarks = marks.size();
     double sum = 0;
-    for (int z: marks)
+    for (int z : marks)
         sum += z;
     return sum / numOfMarks;
 }
@@ -43,7 +43,7 @@ bool Student::isHeadOfGroup() const {
 }
 
 void Student::printMarks() const {
-    for (auto mark: marks) {
+    for (auto mark : marks) {
         std::cout << mark << ' ';
     }
 }

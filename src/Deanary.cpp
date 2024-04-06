@@ -1,13 +1,14 @@
 //
 // Created by user on 31.03.2024.
 //
+#include <string>
+#include <iostream>
+#include <algorithm>
 #include <fstream>
 #include "Deanary.h"
 #include "Group.h"
 #include "Student.h"
-#include <string>
-#include <iostream>
-#include <algorithm>
+
 
 class Student;
 
@@ -17,7 +18,7 @@ using std::find;
 
 size_t getId(const string &student) {
     string sId;
-    for (char c: student) {
+    for (char c : student) {
         if (c == ' ')
             break;
         sId.push_back(c);
@@ -28,7 +29,7 @@ size_t getId(const string &student) {
 string getFio(const string &student) {
     string fio;
     size_t numOfSpaces = 0;
-    for (char c: student) {
+    for (char c : student) {
         if (c == ' ')
             numOfSpaces++;
         if (numOfSpaces < 1)
@@ -44,7 +45,7 @@ string getFio(const string &student) {
 vector<Group *> Deanary::getGroups() {
     vector<Group *> toReturn;
     toReturn.reserve(groups.size());
-    for (auto &x: groups)
+    for (auto &x : groups)
         toReturn.push_back(&x);
     return toReturn;
 }
@@ -52,7 +53,7 @@ vector<Group *> Deanary::getGroups() {
 string getGroup(const string &student) {
     string group;
     size_t numOfSpaces = 0;
-    for (char c: student) {
+    for (char c : student) {
         if (c == ' ')
             numOfSpaces++;
         if (numOfSpaces < 4)
@@ -65,11 +66,11 @@ string getGroup(const string &student) {
 }
 
 
-void pushMarks(std::vector<int> &marks, const string &student) {
+void pushMarks(std::vector<int>& marks, const string &student) {
     size_t numOfSpaces = 0;
     string currentMark;
 
-    for (char c: student) {
+    for (char c : student) {
         if (currentMark == "23cst5" || currentMark == "23cst6" || currentMark == "23cst7") {
             currentMark.erase();
             continue;
@@ -91,8 +92,8 @@ void pushMarks(std::vector<int> &marks, const string &student) {
 }
 
 void Deanary::bindWGroup() {
-    for (auto &group: groups)
-        for (auto student: group.getAllStudents())
+    for (auto &group : groups)
+        for (auto student : group.getAllStudents())
             student->addToGroup(&group);
 }
 
@@ -102,11 +103,11 @@ using std::endl;
 void printToGroups(Deanary &deanary, const string &fgroups = "..//bd/groups.txt") {
     std::ofstream outGroups;
     outGroups.open(fgroups);
-    for (Group *gr: deanary.getGroups()) {
+    for (Group *gr : deanary.getGroups()) {
         outGroups << gr->getTitle() << endl;
-        for (const auto &st: gr->getAllStudents()) {
+        for (const auto &st : gr->getAllStudents()) {
             outGroups << st->getId() << ' ' << st->getFio() << ' ';
-            for (auto m: st->getMarks())
+            for (auto m : st->getMarks())
                 outGroups << m << ' ';
             outGroups << endl;
         }
@@ -117,10 +118,10 @@ void printToGroups(Deanary &deanary, const string &fgroups = "..//bd/groups.txt"
 void printToStudents(Deanary &deanary, const string &fstudents = "..//bd/students.txt") {
     std::ofstream outStudents;
     outStudents.open(fstudents);
-    for (Group *gr: deanary.getGroups()) {
-        for (const auto &st: gr->getAllStudents()) {
+    for (Group *gr : deanary.getGroups()) {
+        for (const auto &st : gr->getAllStudents()) {
             outStudents << st->getId() << ' ' << st->getFio() << ' ' << st->getGroupName() << ' ';
-            for (auto m: st->getMarks())
+            for (auto m : st->getMarks())
                 outStudents << m << ' ';
             outStudents << endl;
         }
@@ -153,7 +154,7 @@ void Deanary::createGroups(const string &path) {
             pushMarks(marks, student);
 
             Student newStudent(id, fio);
-            for (auto z: marks)
+            for (auto z : marks)
                 newStudent.addMark(z);
 
             newGroup.addStudent(newStudent);
@@ -178,11 +179,11 @@ void Deanary::hireStudents(const std::string &path) {
         pushMarks(marks, student);
 
         auto *newStudent = new Student(id, fio);
-        for (auto z: marks)
+        for (auto z : marks)
             newStudent->addMark(z);
 
         string group = getGroup(student);
-        for (auto &gr: this->groups) {
+        for (auto &gr : this->groups) {
             if (gr.getTitle() == group) {
                 newStudent->addToGroup(&gr);
                 gr.addStudent(*newStudent);
@@ -194,21 +195,21 @@ void Deanary::hireStudents(const std::string &path) {
 }
 
 void Deanary::addMarksToAll() {
-    for (auto &group: groups)
-        for (auto &student: group.getAllStudents())
+    for (auto &group : groups)
+        for (auto &student : group.getAllStudents())
             student->addMark(rand() % 10);
     saveStaff();
 }
 
 void Deanary::getStatistics() {
-    for (auto &group: groups) {
+    for (auto &group : groups) {
         if (!group.isEmpty()) {
             std::cout << "Group " << group.getTitle() << " marks:" << '\n';
             std::cout << "Avarage mark: " << group.getAverageMark();
         } else {
             std::cout << "Group " << group.getTitle() << " is empty" << '\n';
         }
-        for (auto &student: group.getAllStudents()) {
+        for (auto &student : group.getAllStudents()) {
             std::cout << std::endl;
             std::cout << student->getFio() << ':';
             student->printMarks();
@@ -218,8 +219,8 @@ void Deanary::getStatistics() {
 }
 
 void Deanary::moveStudents(size_t id, Group &to) {
-    for (auto &group: groups) {
-        for (auto &student: group.getAllStudents()) {
+    for (auto &group : groups) {
+        for (auto &student : group.getAllStudents()) {
             if (student->getId() == id) {
                 to.addStudent(*student);
                 group.removeStudent(*student);
@@ -231,8 +232,8 @@ void Deanary::moveStudents(size_t id, Group &to) {
 }
 
 void Deanary::expulsion(size_t id) {
-    for (auto &group: groups) {
-        for (auto &student: group.getAllStudents()) {
+    for (auto &group : groups) {
+        for (auto &student : group.getAllStudents()) {
             if (student->getId() == id) {
                 group.removeStudent(*student);
                 saveStaff();
@@ -243,12 +244,12 @@ void Deanary::expulsion(size_t id) {
 }
 
 void Deanary::initHeads() {
-    for (auto &group: groups) {
+    for (auto &group : groups) {
         double maxAvarageMark = -10;
-        for (auto &student: group.getAllStudents()) {
+        for (auto &student : group.getAllStudents()) {
             maxAvarageMark = std::max(maxAvarageMark, student->getAverageMark());
         }
-        for (auto &student: group.getAllStudents()) {
+        for (auto &student : group.getAllStudents()) {
             if (student->getAverageMark() == maxAvarageMark) {
                 group.chooseHead(student);
                 break;
@@ -259,7 +260,7 @@ void Deanary::initHeads() {
 
 
 void Deanary::hireStudents(Student &student) {
-    for (auto group: this->getGroups()) {
+    for (auto group : this->getGroups()) {
         if (group->getTitle() == student.getGroupName()) {
             group->addStudent(student);
             break;

@@ -4,18 +4,17 @@
 
 #ifndef DEANERY_STUDENT_H
 #define DEANERY_STUDENT_H
-
-#include "..//include/Group.h"
 #include <utility>
 #include <vector>
 #include <string>
+#include "..//include/Group.h"
 
 using std::vector, std::string;
 
 class Group;
 
 class Student {
-public:
+ public:
     Student(size_t id, string fio) : id(id), fio(std::move(fio)) {}
 
     size_t getId() const;
@@ -40,12 +39,11 @@ public:
 
     void printMarks() const;
 
-private:
+ private:
     size_t id = 0;
     string fio;
     const Group *group = nullptr;
     vector<int> marks;
 };
 
-
-#endif //DEANERY_STUDENT_H
+#endif  // DEANERY_STUDENT_H

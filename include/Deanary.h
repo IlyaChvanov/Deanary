@@ -7,13 +7,14 @@
 #include <vector>
 #include "Group.h"
 #include <fstream>
+#include <string>
 
 using std::vector, std::string;
 
 class Group;
 
 class Deanary {
-public:
+ public:
     vector<Group *> getGroups();
 
     void getStatistics();
@@ -32,7 +33,7 @@ public:
 
     void initHeads();
 
-private:
+ private:
     void saveStaff(const string &fgroups = "..//bd/groups.txt", const string &fstudents = "..//bd/students.txt");
 
     vector<Group> groups;
@@ -40,4 +41,4 @@ private:
     void bindWGroup();
 };
 
-#endif //DEANERY_DEANARY_H
+#endif  // DEANERY_DEANARY_H
