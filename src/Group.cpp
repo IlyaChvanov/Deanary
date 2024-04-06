@@ -8,6 +8,7 @@
 struct studentNotFound {
     string what = "Student was not found";
 };
+
 void Group::addStudent(Student &newStudent) {
     students.push_back(newStudent);
     newStudent.addToGroup(this);
