@@ -18,11 +18,11 @@ int main() {
     cout << '\n';
 
     HSE.getStatistics();
-    cout << endl << "Deleted everyone " << endl;;
-
-    for (size_t i = 0; i < 91; i++)
+    cout << endl << "Deleting everyone " << endl;;
+    for (size_t i = 0; i < 92; i++)
         HSE.expulsion(i);
 
+    cout<<"Adding new student"<<endl<<endl;
     Student student92(92, "Lobanov Eduard Vadimovich");
     student92.addMark(-10);
     student92.addToGroup(HSE.getGroups()[0]);
