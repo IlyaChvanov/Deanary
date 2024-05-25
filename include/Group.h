@@ -45,7 +45,7 @@ class Group {
  private:
     string title;
     string spec;
-    vector<Student> students;
+    vector<Student> students;// I couldn't use pointers((
     const Student *head = nullptr;
 };
 
