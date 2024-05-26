@@ -10,10 +10,6 @@
 #include "Student.h"
 
 
-class Student;
-
-class Group;
-
 using std::find;
 
 size_t getId(const string &student) {
