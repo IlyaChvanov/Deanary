@@ -1,4 +1,4 @@
-C:/Users/user/Desktop/Kostin_cpp/Deanery/cmake-build-debug/CMakeFiles/deanery_lib.dir
-C:/Users/user/Desktop/Kostin_cpp/Deanery/cmake-build-debug/CMakeFiles/Deanery.dir
-C:/Users/user/Desktop/Kostin_cpp/Deanery/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/user/Desktop/Kostin_cpp/Deanery/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Desktop/Kostin_cpp/Deanary/cmake-build-debug/CMakeFiles/deanery_lib.dir
+C:/Users/user/Desktop/Kostin_cpp/Deanary/cmake-build-debug/CMakeFiles/Deanery.dir
+C:/Users/user/Desktop/Kostin_cpp/Deanary/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/Kostin_cpp/Deanary/cmake-build-debug/CMakeFiles/rebuild_cache.dir

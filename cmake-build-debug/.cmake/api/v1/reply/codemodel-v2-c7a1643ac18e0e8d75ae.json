@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Deanery::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Deanery-Debug-156b34dc7cadfd283f15.json",
+					"jsonFile" : "target-Deanery-Debug-7a34399f3843fcf5d940.json",
 					"name" : "Deanery",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "deanery_lib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-deanery_lib-Debug-74e4ed621041f4ec82e0.json",
+					"jsonFile" : "target-deanery_lib-Debug-9b816092f65cb5bb5d2e.json",
 					"name" : "deanery_lib",
 					"projectIndex" : 0
 				}
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/user/Desktop/Kostin_cpp/Deanery/cmake-build-debug",
-		"source" : "C:/Users/user/Desktop/Kostin_cpp/Deanery"
+		"build" : "C:/Users/user/Desktop/Kostin_cpp/Deanary/cmake-build-debug",
+		"source" : "C:/Users/user/Desktop/Kostin_cpp/Deanary"
 	},
 	"version" : 
 	{
