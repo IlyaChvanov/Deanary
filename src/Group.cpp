@@ -4,6 +4,7 @@
 #include "Group.h"
 #include "Student.h"
 #include <iostream>
+#include <algorithm>
 
 struct studentNotFound {
     string message = "student was not found";
@@ -28,20 +29,25 @@ int Group::getAverageMark() const {
     return marksSum / numOfStudents;
 }
 
+namespace ranges = std::ranges;
+using ranges::find_if;
+
 const Student &Group::getStudent(const std::string &fio) const {
-    for (auto st : students) {
-        if (st.getFio() == fio)
-            return st;
+    auto to_return = find_if(students,
+                             [fio](auto student) {return student.getFio() == fio;});
+    if (to_return != students.end()) {
+        return *to_return;
     }
     throw studentNotFound();
 }
 
 const Student &Group::getStudent(size_t id) const {
-    for (const auto &st : students) {
-        if (st.getId() == id)
-            return st;
+    auto to_return = find_if(students,
+                             [id](auto student) {return student.getId() == id;});
+    if (to_return != students.end()) {
+        return *to_return;
     }
-    throw "Student not found";
+    throw studentNotFound();
 }
 
 void Group::removeStudent(Student &st) {
@@ -51,7 +57,7 @@ void Group::removeStudent(Student &st) {
             students.erase(it);
             return;
         }
-        throw "Student not found";
+        throw studentNotFound();
     }
 }
 
