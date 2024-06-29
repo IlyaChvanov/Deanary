@@ -6,7 +6,7 @@
 #include <iostream>
 
 struct studentNotFound {
-    string what = "Student was not found";
+    string message = "student was not found";
 };
 
 void Group::addStudent(Student &newStudent) {

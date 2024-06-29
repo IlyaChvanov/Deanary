@@ -2,8 +2,6 @@
 #include <iostream>
 
 #include "..//include//Deanary.h"
-#include "..//include/Student.h"
-#include "..//include/Group.h"
 
 using std::vector, std::string, std::endl, std::cout;
 
