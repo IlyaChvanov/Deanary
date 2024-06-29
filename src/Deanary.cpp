@@ -96,7 +96,7 @@ void Deanary::bindWGroup() {
 
 using std::endl;
 
-void printToGroups(Deanary &deanary, const string &fgroups = "..//bd/groups.txt") {
+void printToFileWGroups(Deanary &deanary, const string &fgroups = "..//bd/groups.txt") {
     std::ofstream outGroups;
     outGroups.open(fgroups);
     for (Group *gr : deanary.getGroups()) {
@@ -111,7 +111,7 @@ void printToGroups(Deanary &deanary, const string &fgroups = "..//bd/groups.txt"
     }
 }
 
-void printToStudents(Deanary &deanary, const string &fstudents = "..//bd/students.txt") {
+void printToFileWStudents(Deanary &deanary, const string &fstudents = "..//bd/students.txt") {
     std::ofstream outStudents;
     outStudents.open(fstudents);
     for (Group *gr : deanary.getGroups()) {
@@ -125,8 +125,8 @@ void printToStudents(Deanary &deanary, const string &fstudents = "..//bd/student
 }
 
 void Deanary::saveStaff(const string &fgroups, const string &fstudents) {
-    printToGroups(*this, fgroups);
-    printToStudents(*this, fstudents);
+    printToFileWGroups(*this, fgroups);
+    printToFileWStudents(*this, fstudents);
 }
 
 void Deanary::createGroups(const string &path) {
@@ -216,7 +216,8 @@ void Deanary::getStatistics() {
 
 void Deanary::moveStudents(size_t id, Group &to) {
     for (auto &group : groups) {
-        for (auto &student : group.getAllStudents()) {
+
+        for (auto student : group.getAllStudents()) {
             if (student->getId() == id) {
                 to.addStudent(*student);
                 group.removeStudent(*student);
