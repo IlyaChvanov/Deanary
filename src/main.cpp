@@ -9,8 +9,8 @@ int main() {
     Deanary HSE;
     HSE.createGroups("..//bd/groups.txt");
 
-    for (const auto &x : HSE.getGroups()) {
-        cout << "Avarage mark in group " << x->getTitle() << " is " << x->getAverageMark() << endl;
+    for (const auto &group : HSE.getGroups()) {
+        cout << "Avarage mark in group " << group->getTitle() << " is " << group->getAverageMark() << endl;
     }
     HSE.addMarksToAll();
     cout << '\n';
